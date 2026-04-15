@@ -104,7 +104,7 @@ Tool for decrypt CAS and CAS2 ROM files (*.mameac.2) to regular ZIP
 | MONSTER HUNTER WILDS (Open Beta 2) | [here](https://store.steampowered.com/app/3065170) | [here](https://steamdb.info/app/3065170) | [MHWs_STM_Open_Beta2](Projects)
 | MONSTER HUNTER WILDS (Benchmark) | [here](https://store.steampowered.com/app/3424520) | [here](https://steamdb.info/app/3424520) | [MHWs_STM_Benchmark](Projects)
 | MONSTER HUNTER WILDS | [here](https://store.steampowered.com/app/2246340) | [here](https://steamdb.info/app/2246340)| [MHWs_STM_Release](Projects)
-| Monster Hunter Stories 3: Twisted Reflection | [here](https://store.steampowered.com/app/2852190) | [here](https://steamdb.info/app/2852190)| None
+| Monster Hunter Stories 3: Twisted Reflection | [here](https://store.steampowered.com/app/2852190) | [here](https://steamdb.info/app/2852190)| [MHS3_TR_STM_Release](Projects)
 | Monster Hunter Stories 3: Twisted Reflection Trial Version | [here](https://store.steampowered.com/app/3470630) | [here](https://steamdb.info/app/3470630)| [MHS3_TR_STM_Demo](Projects)
 | Onimusha: Way of the Sword | [here](https://store.steampowered.com/app/2638890) | [here](https://steamdb.info/app/2638890)| None
 | Onimusha 2: Samurai's Destiny | [here](https://store.steampowered.com/app/3046600) | [here](https://steamdb.info/app/3046600)| [O2_SD_STM_Release](Projects)
@@ -218,3 +218,4 @@ Tool for decrypt CAS and CAS2 ROM files (*.mameac.2) to regular ZIP
 * [Eigeen](https://github.com/eigeen)
 * [Battlezone](https://github.com/seifhassine) (RE9 DLC filenames)
 * [lucablight83](https://github.com/lucablight83) (RE9 EGS filenames)
+* [Red1Fouad](https://github.com/Red1Fouad) (MHS3 TR STM filenames)
