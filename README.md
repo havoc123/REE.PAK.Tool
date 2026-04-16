@@ -68,7 +68,7 @@ Tool for decrypt CAS and CAS2 ROM files (*.mameac.2) to regular ZIP
 | Ghost Trick: Phantom Detective | [here](https://store.steampowered.com/app/1967430) | [here](https://steamdb.info/app/1967430) | [GTPD_STM_Release](Projects)
 | Ghost Trick: Phantom Detective Demo | [here](https://store.steampowered.com/app/1971230) | [here](https://steamdb.info/app/1971230) | [GTPD_STM_Demo](Projects)
 | PRAGMATA SKETCHBOOK - DEMO | [here](https://store.steampowered.com/app/4003800) | [here](https://steamdb.info/app/4003800) | [PS_STM_Demo](Projects)
-| PRAGMATA | [here](https://store.steampowered.com/app/3357650) | [here](https://steamdb.info/app/3357650)| None
+| PRAGMATA | [here](https://store.steampowered.com/app/3357650) | [here](https://steamdb.info/app/3357650)| [P_STM_Release](Projects)
 | Resident Evil 2: "1-Shot Demo" | [here](https://store.steampowered.com/app/961440) | [here](https://steamdb.info/app/961440) | [RE2_1S_STM_Demo](Projects)
 | Resident Evil 2: "R.P.D. Demo" | [here](https://store.steampowered.com/app/1168280) | [here](https://steamdb.info/app/1168280) | [RE2_RPD_STM_Demo](Projects)
 | Resident Evil 2 | [here](https://store.steampowered.com/app/883710) | [here](https://steamdb.info/app/883710) | [RE2_STM_Release](Projects)
