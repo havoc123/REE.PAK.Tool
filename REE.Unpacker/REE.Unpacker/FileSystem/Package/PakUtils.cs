@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -47,14 +47,13 @@ namespace REE.Unpacker
         {
             m_FullPath = PakUtils.iDetectFileType(m_FullPath, m_Chunks[0]);
 
-            using (BinaryWriter TBinaryWriter = new BinaryWriter(File.Open(m_FullPath, FileMode.Create)))
+            using (var TOutStream = new FileStream(m_FullPath, FileMode.Create, FileAccess.Write, FileShare.None, 1048576, FileOptions.SequentialScan))
+            using (BinaryWriter TBinaryWriter = new BinaryWriter(TOutStream))
             {
                 foreach (var m_Chunk in m_Chunks)
                 {
                     TBinaryWriter.Write(m_Chunk);
                 }
-
-                TBinaryWriter.Dispose();
             }
         }
 

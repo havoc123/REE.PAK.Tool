@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 
@@ -44,6 +44,11 @@ namespace REE.Unpacker
             TProjectFile.Close();
             Utils.iSetInfo("[INFO]: Project File Loaded: " + i.ToString());
             Console.WriteLine();
+        }
+
+        public static Boolean iContainsHash(UInt64 dwHash)
+        {
+            return m_HashList.ContainsKey(dwHash);
         }
 
         public static String iGetNameFromHashList(UInt64 dwHash)

@@ -1,0 +1,11 @@
+d:\project\reeunpacker\REE.PAK.Tool\REE.Unpacker\REE.Unpacker\bin\Release\REE.Unpacker.exe.config
+d:\project\reeunpacker\REE.PAK.Tool\REE.Unpacker\REE.Unpacker\bin\Release\REE.Unpacker.exe
+d:\project\reeunpacker\REE.PAK.Tool\REE.Unpacker\REE.Unpacker\bin\Release\REE.Unpacker.pdb
+d:\project\reeunpacker\REE.PAK.Tool\REE.Unpacker\REE.Unpacker\bin\Release\System.Buffers.dll
+d:\project\reeunpacker\REE.PAK.Tool\REE.Unpacker\REE.Unpacker\bin\Release\Zstandard.Net.dll
+d:\project\reeunpacker\REE.PAK.Tool\REE.Unpacker\REE.Unpacker\obj\Release\REE.Unpacker.csproj.AssemblyReference.cache
+d:\project\reeunpacker\REE.PAK.Tool\REE.Unpacker\REE.Unpacker\obj\Release\REE.Unpacker.csproj.CoreCompileInputs.cache
+d:\project\reeunpacker\REE.PAK.Tool\REE.Unpacker\REE.Unpacker\obj\Release\REE.Unpa.3CC7AC59.Up2Date
+d:\project\reeunpacker\REE.PAK.Tool\REE.Unpacker\REE.Unpacker\obj\Release\REE.Unpacker.exe
+d:\project\reeunpacker\REE.PAK.Tool\REE.Unpacker\REE.Unpacker\obj\Release\REE.Unpacker.pdb
+d:\project\reeunpacker\REE.PAK.Tool\REE.Unpacker\REE.Unpacker\obj\Release\REE.Unpacker.exe.config

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +19,14 @@ namespace REE.Unpacker
                 offset += bytesRead;
             }
             return result;
+        }
+
+        public static byte[] ReadBytes(this Stream stream, long count)
+        {
+            if (count < 0 || count > int.MaxValue)
+                throw new ArgumentOutOfRangeException(nameof(count));
+
+            return ReadBytes(stream, (int)count);
         }
 
         public static byte[] ReadBytes(this Stream stream)
