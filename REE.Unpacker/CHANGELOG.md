@@ -11,7 +11,7 @@
 - 在遍历每个 `PakEntry` 的 `try` 块中执行解压与写入；在 `catch` 中分别处理 `OutOfMemoryException` 与 `Exception`。
 - 捕获后在控制台以**红色**输出警告，内容包含当前文件的完整路径与条目哈希（十六进制）。
 - 在 `catch` 中调用 `GC.Collect()` 与 `GC.WaitForPendingFinalizers()`，然后使用 `continue` 处理下一个条目，不因单个文件失败而终止整个解包。
-- 在上述两个 `catch` 中还会将**被跳过条目的哈希**（每行一个 16 位大写十六进制，无 `0x`）追加写入可执行文件同目录下的 **`error_log.txt`**；写日志失败时静默忽略，不中断解包。
+- 在上述两个 `catch` 中还会将**被跳过条目的哈希**以及 **`PakList` 解析出的相对路径**（`m_FileName`：列表中的逻辑路径；未知条目则为 `__Unknown\…`）追加写入可执行文件同目录下的 **`error_log.txt`**。每行格式：`哈希<TAB>路径`（哈希为 16 位大写十六进制，无 `0x`）；写日志失败时静默忽略，不中断解包。
 - 移除循环末尾多余的 `TPakStream.Dispose()`（已由 `using` 负责释放）。
 
 ---
@@ -77,3 +77,17 @@
 ## 5. 编译
 
 使用 Visual Studio 或 MSBuild 的 **Release** 配置编译解决方案 `REE.Unpacker.sln` 即可；默认 **Release | Any CPU** 现已产出 **x64** 可执行文件。
+
+---
+
+## 6. `error_log.txt` 与 `--known-only` 的对应关系
+
+`error_log.txt` 位于 **`REE.Unpacker.exe` 同目录**。只有进入 **`try` 解压/写出** 且被 **`catch`** 捕获的条目才会追加一行（`哈希<TAB>路径`）；**策略性跳过**（未进入 `try`）不会写入该文件。
+
+| 场景 | 是否写入 `error_log.txt` | 说明 |
+|------|---------------------------|------|
+| 使用 **`--known-only`**，哈希**不在**工程 `.list` 中 | **否** | 在 `try` 之前 `continue`；仅控制台 `[跳过] 未知文件: {hash}` |
+| 使用 **`--known-only`**，哈希**在** list 中，解压/写出**报错**（OOM 或其它异常） | **是** | 经 `catch` 写入哈希与当时的 `m_FileName`（列表逻辑路径） |
+| **默认**（未加 `--known-only`），任意条目在解压/写出**报错** | **是** | 含 list 内路径或 `__Unknown\…` 等解析结果 |
+
+**归纳：** `--known-only` 下只有「list 内条目在解压阶段出错」才写入 `error_log.txt`；默认全量解包时，**凡是解压阶段出错**都写入。仅因「不在 list」在 `try` 之前被策略跳过的条目**不会**写入 `error_log.txt`。

@@ -10,14 +10,21 @@ namespace REE.Unpacker
         private static List<PakEntry> m_EntryTable = new List<PakEntry>();
         private static readonly Object s_SkipErrorLogLock = new Object();
 
-        private static void iAppendSkippedHashToErrorLog(UInt64 dwEntryHash)
+        private static void iAppendSkippedHashToErrorLog(UInt64 dwEntryHash, String m_ListRelativePath)
         {
             try
             {
                 String m_LogPath = Path.Combine(Utils.iGetApplicationPath(), "error_log.txt");
+                String m_Line = dwEntryHash.ToString("X16");
+                if (!String.IsNullOrEmpty(m_ListRelativePath))
+                {
+                    m_Line = m_Line + "\t" + m_ListRelativePath.Replace('\r', ' ').Replace('\n', ' ');
+                }
+
+                m_Line += Environment.NewLine;
                 lock (s_SkipErrorLogLock)
                 {
-                    File.AppendAllText(m_LogPath, dwEntryHash.ToString("X16") + Environment.NewLine);
+                    File.AppendAllText(m_LogPath, m_Line);
                 }
             }
             catch
@@ -213,7 +220,7 @@ namespace REE.Unpacker
                     }
                     catch (OutOfMemoryException)
                     {
-                        iAppendSkippedHashToErrorLog(dwEntryHash);
+                        iAppendSkippedHashToErrorLog(dwEntryHash, m_FileName);
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("[WARNING]: Skipped file (out of memory) — path: \"" + m_FullPath + "\", hash: 0x" + dwEntryHash.ToString("X16"));
                         Console.ResetColor();
@@ -223,7 +230,7 @@ namespace REE.Unpacker
                     }
                     catch (Exception ex)
                     {
-                        iAppendSkippedHashToErrorLog(dwEntryHash);
+                        iAppendSkippedHashToErrorLog(dwEntryHash, m_FileName);
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("[WARNING]: Skipped file — path: \"" + m_FullPath + "\", hash: 0x" + dwEntryHash.ToString("X16") + ", error: " + ex.Message);
                         Console.ResetColor();
