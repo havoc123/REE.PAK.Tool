@@ -25,7 +25,7 @@ namespace REE.Unpacker
             }
         }
 
-        public static void iDoIt(String m_PakFile, String m_DstFolder)
+        public static void iDoIt(String m_PakFile, String m_DstFolder, Boolean m_OnlyKnownInList)
         {
             using (FileStream TPakStream = new FileStream(m_PakFile, FileMode.Open, FileAccess.Read, FileShare.Read, 1048576, FileOptions.SequentialScan))
             {
@@ -142,7 +142,7 @@ namespace REE.Unpacker
                 foreach (var m_Entry in m_EntryTable)
                 {
                     UInt64 dwEntryHash = ((UInt64)m_Entry.dwHashNameUpper << 32) | m_Entry.dwHashNameLower;
-                    if (!PakList.iContainsHash(dwEntryHash))
+                    if (m_OnlyKnownInList && !PakList.iContainsHash(dwEntryHash))
                     {
                         Console.WriteLine("[跳过] 未知文件: " + dwEntryHash.ToString("X16"));
                         continue;

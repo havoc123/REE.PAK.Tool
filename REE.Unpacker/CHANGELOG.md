@@ -35,20 +35,25 @@
 
 ---
 
-## 3. 只提取「字典中有路径」的已知文件
+## 3. 只提取「字典中有路径」的已知文件（命令行开关）
 
 **文件：**
 
 - `FileSystem/Package/PakList.cs`
 - `FileSystem/Package/PakUnpack.cs`
+- `Program.cs`
 
 **要点：**
 
 - 新增 `PakList.iContainsHash(UInt64 dwHash)`，基于工程列表字典 `m_HashList.ContainsKey` 判断条目是否「已知」。
-- 在主循环中，在计算 `dwEntryHash` 之后、**任何**路径解析、`Seek`、读数据或解压**之前**：若 `!PakList.iContainsHash(dwEntryHash)`，则打印 `[跳过] 未知文件: {hash}`（16 位大写十六进制），并 `continue`。
-- 未知条目不再分配解压缓冲区或写入磁盘，降低因未知大文件导致的内存压力。
+- `PakUnpack.iDoIt(..., Boolean m_OnlyKnownInList)`：仅当 **`m_OnlyKnownInList` 为 true** 时，在解压前跳过不在列表中的条目；默认 **false**，行为与原版一致（未知文件仍解到 `__Unknown\`）。
+- **命令行**（可写在任意位置，与路径参数顺序无关）：
+  - `--known-only`
+  - `-knownonly`
+  - `/knownonly`  
+  启用后：在计算 `dwEntryHash` 之后、路径解析与读数据之前，若不在列表中则打印 `[跳过] 未知文件: {hash}` 并 `continue`。
 
-**注意：** 若未成功加载对应 `.list` 或列表为空，则所有条目都会被视为未知并被跳过。
+**注意：** 使用 `--known-only` 且未成功加载对应 `.list` 或列表为空时，所有条目都会被视为未知并被跳过。
 
 ---
 
